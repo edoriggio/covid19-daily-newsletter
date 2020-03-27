@@ -25,7 +25,7 @@ a:hover {
     color: #16a524;
 }
 
-/* 
+/*
 ------------------------
         MAIN DIV
 ------------------------
@@ -74,7 +74,7 @@ a:hover {
     color: #16a524;
 }
 
-/* 
+/*
 ------------------------
      FORM ELEMENTS
 ------------------------
@@ -150,8 +150,8 @@ form {
     font-weight: normal;
     font-size: calc(10px + .3vw);
     text-align: left;
-    line-height: 32px; 
-    
+    line-height: 32px;
+
     color: #cdcdcd;
 }
 
@@ -196,7 +196,7 @@ form {
     background-color: #13811e;
 }
 
-/* 
+/*
 ------------------------
          OVERLAY
 ------------------------
@@ -232,13 +232,15 @@ form {
     background-color: #FFFFFF;
 }
 
-/* 
+/*
 ------------------------
          CHOICES
 ------------------------
 */
 
 .flag {
+    vertical-align: middle;
+
     width: 55px;
 }
 
@@ -247,9 +249,43 @@ form {
 
     top: 30px;
     left: 30px;
+
+    border-style: none;
+
+    background-color: transparent;
 }
 
-/* 
+#world:hover {
+    cursor: pointer;
+}
+
+#divider-or {
+    position: absolute;
+
+    top: 90px;
+    left: 0px;
+    right: 0px;
+
+    margin: auto;
+
+    width: calc(300px + 2vw);
+}
+
+.country {
+    display: inline;
+
+    margin-left: 20px;
+
+    vertical-align: middle;
+
+    font-family: "Product Sans";
+    font-weight: normal;
+    font-size: 18px;
+    text-align: left;
+    color: #000;
+}
+
+/*
 ------------------------
          FOOTER
 ------------------------
