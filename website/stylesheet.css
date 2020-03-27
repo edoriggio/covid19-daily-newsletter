@@ -16,6 +16,12 @@ html {
     overflow-x: hidden;
 }
 
+/* 
+------------------------
+        MAIN DIV
+------------------------
+*/
+
 .main {
     position: absolute;
 
@@ -59,10 +65,16 @@ html {
     color: #16a524;
 }
 
+/* 
+------------------------
+     FORM ELEMENTS
+------------------------
+*/
+
 form {
     position: absolute;
 
-    top: calc(150px + 1vw);
+    top: calc(180px + 1vw);
     left: 0px;
     right: 0px;
 
@@ -124,6 +136,15 @@ form {
     color: #cdcdcd;
 }
 
+.icon {
+    position: absolute;
+
+    top: 1px;
+    right: 10px;
+
+    width: 30px;
+}
+
 .form-item::placeholder {
     font-family: "Product Sans";
     font-weight: normal;
@@ -134,10 +155,16 @@ form {
 }
 
 .button {
-    position: relative;
+    position: absolute;
+
+    top: calc(120px + 1vw);
+    left: 0px;
+    right: 0px;
+
+    margin: auto;
 
     width: 212px;
-    height: 30px;
+    height: 32px;
 
     border-radius: 25px;
     border-style: none;
@@ -151,6 +178,6 @@ form {
 
 .button:hover {
     cursor: pointer;
-    
+
     background-color: #13811e;
 }
