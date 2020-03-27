@@ -271,7 +271,7 @@ form {
     width: calc(300px + 2vw);
 }
 
-.country {
+.country-name {
     display: inline;
 
     margin-left: 20px;
@@ -282,7 +282,71 @@ form {
     font-weight: normal;
     font-size: 18px;
     text-align: left;
-    color: #000;
+
+    color: #000000;
+}
+
+#title {
+    position: relative;
+
+    top: 65px;
+    left: 20px;
+
+    font-family: "Product Sans";
+    font-weight: bold;
+    font-size: 26px;
+    text-align: left;
+    
+    color: #000000;
+}
+
+.divider {
+    position: absolute;
+
+    left: 20px;
+    right: 20px;
+
+    margin: auto;
+
+    border: 1px solid;
+    border-radius: 100px;
+    
+    border-color: #e4e4e4;
+}
+
+#final {
+    left: calc(10px + 2vw);
+    right: calc(10px + 2vw);
+    bottom: 60px;
+
+    border-color: #d8d8d8;
+}
+
+.done {
+    position: absolute;
+
+    right: 0px;
+    left: 0px;
+    bottom: 5px;
+
+    margin: auto;
+
+    width: 200px;
+    height: 50px;
+
+    font-family: "Product Sans";
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+
+    border-style: none;
+
+    background-color: transparent;
+    color: #16a524;
+}
+
+.done:hover {
+    cursor: pointer;
 }
 
 /*
