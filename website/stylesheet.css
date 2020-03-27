@@ -16,6 +16,15 @@ html {
     overflow-x: hidden;
 }
 
+a {
+    text-decoration: underline;
+    color: #a2a2a2;
+}
+
+a:hover {
+    color: #16a524;
+}
+
 /* 
 ------------------------
         MAIN DIV
@@ -106,12 +115,22 @@ form {
     background-color: #FFFFFF;
 }
 
+.form-item::placeholder {
+    font-family: "Product Sans";
+    font-weight: normal;
+    font-size: calc(10px + .3vw);
+    text-align: left;
+
+    color: #a2a2a2;
+}
+
 #country {
     position: absolute;
 
     top: calc(50px + 1vw);
 
-    height: 32px;
+    height: 34px;
+    width: calc(320px + 1vw);
 
     background-color: #FFFFFF;
 }
@@ -136,6 +155,10 @@ form {
     color: #cdcdcd;
 }
 
+#country:hover {
+    cursor: pointer;
+}
+
 .icon {
     position: absolute;
 
@@ -143,15 +166,6 @@ form {
     right: 10px;
 
     width: 30px;
-}
-
-.form-item::placeholder {
-    font-family: "Product Sans";
-    font-weight: normal;
-    font-size: calc(10px + .3vw);
-    text-align: left;
-
-    color: #a2a2a2;
 }
 
 .button {
@@ -180,4 +194,38 @@ form {
     cursor: pointer;
 
     background-color: #13811e;
+}
+
+/* 
+------------------------
+         OVERLAY
+------------------------
+*/
+
+#overlay-back {
+    position: fixed;
+
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+
+    background: rgba(111, 111, 111, 0.24);
+}
+
+.footer {
+    position: absolute;
+
+    left: 20px;
+    right: 20px;
+    bottom: 0px;
+
+
+    line-height: 20px;
+    font-family: "Product Sans";
+    font-weight: normal;
+    font-size: 14px;
+    text-align: center;
+
+    color: #a2a2a2;
 }
