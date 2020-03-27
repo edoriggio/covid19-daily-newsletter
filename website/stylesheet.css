@@ -213,13 +213,54 @@ form {
     background: rgba(111, 111, 111, 0.24);
 }
 
+.choices {
+    position: absolute;
+
+    top: 70px;
+    right: 0px;
+    left: 0px;
+    bottom: 70px;
+
+    margin: auto;
+
+    width: calc(250px + 20vw);
+    max-width: 600px;
+
+    border-radius: 23px;
+    box-shadow: 0px 3px 40px rgba(0, 0, 0, 0.03);
+
+    background-color: #FFFFFF;
+}
+
+/* 
+------------------------
+         CHOICES
+------------------------
+*/
+
+.flag {
+    width: 55px;
+}
+
+#world {
+    position: relative;
+
+    top: 30px;
+    left: 30px;
+}
+
+/* 
+------------------------
+         FOOTER
+------------------------
+*/
+
 .footer {
     position: absolute;
 
     left: 20px;
     right: 20px;
     bottom: 0px;
-
 
     line-height: 20px;
     font-family: "Product Sans";
