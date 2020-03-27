@@ -1,0 +1,156 @@
+/* Copyright  2020  Edoardo Riggio
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License. */
+
+html {
+    overflow-x: hidden;
+}
+
+.main {
+    position: absolute;
+
+    min-width: 350px;
+
+    top: calc(80px + 2vw);
+    left: 10px;
+    right: 10px;
+    bottom: calc(80px + 2vw);
+
+    margin: auto;
+}
+
+#logo {
+    position: absolute;
+
+    top: 0px;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+
+    height: calc(60px + 1vw);
+}
+
+.title {
+    position: absolute;
+
+    top: calc(60px + 1vw + 30px);
+    left: 0px;
+    right: 0px;
+
+    margin: auto;
+
+    font-family: "Product Sans";
+    font-weight: bold;
+    font-size: calc(25px + 1vw);
+
+    text-align: center;
+
+    color: #16a524;
+}
+
+form {
+    position: absolute;
+
+    top: calc(150px + 1vw);
+    left: 0px;
+    right: 0px;
+
+    margin: auto;
+}
+
+.form-item {
+    position: absolute;
+
+    top: 1vw;
+    left: 0px;
+    right: 0px;
+
+    margin: auto;
+    padding-left: 17px;
+
+    height: 30px;
+    width: calc(300px + 1vw);
+
+    border: 1.8px solid #a2a2a2;
+    border-radius: 100px;
+
+    font-family: "Product Sans";
+    font-weight: normal;
+    font-size: calc(10px + .3vw);
+    text-align: left;
+
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+#country {
+    position: absolute;
+
+    top: calc(50px + 1vw);
+
+    height: 32px;
+
+    background-color: #FFFFFF;
+}
+
+#placeholder {
+    position: relative;
+
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+
+    margin: auto;
+    vertical-align: middle;
+
+    font-family: "Product Sans";
+    font-weight: normal;
+    font-size: calc(10px + .3vw);
+    text-align: left;
+    line-height: 32px; 
+    
+    color: #cdcdcd;
+}
+
+.form-item::placeholder {
+    font-family: "Product Sans";
+    font-weight: normal;
+    font-size: calc(10px + .3vw);
+    text-align: left;
+
+    color: #a2a2a2;
+}
+
+.button {
+    position: relative;
+
+    width: 212px;
+    height: 30px;
+
+    border-radius: 25px;
+    border-style: none;
+
+    font-family: "Product Sans";
+    font-weight: bold;
+
+    color: #FFFFFF;
+    background-color: #16a524;
+}
+
+.button:hover {
+    cursor: pointer;
+    
+    background-color: #13811e;
+}
