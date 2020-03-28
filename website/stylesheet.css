@@ -376,6 +376,7 @@ form {
     margin: auto;
 
     overflow-y: auto;
+    scrollbar-width: thin;
 }
 
 .list-choices {

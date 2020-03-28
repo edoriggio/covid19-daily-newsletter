@@ -16,12 +16,55 @@ let countries = ["afghanistan", "albania", "algeria", "andorra", "angola", "angu
 let names = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Coast D'Ivoire", "Colombia", "Congo", "Costa Rica", "Croatia", "Cuba", "Curacao", "Czechia", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "French Polynesia", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Haiti", "Vatican City State", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macao", "Macedonia", "Madagascar", "Malaysia", "Maldives", "Mali", "Malta", "Martinique", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "South Korea", "Saint Kitts and Nevis", "Saint Lucia", "San Marino", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Singapore", "Sint Maarten", "Slovakia", "Slovenia", "Somalia", "South Africa", "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syriac", "Taiwan", "Tanzania", "Thailand", "Togo", "Trinidad and Tobago", "Tunisia", "Turkey", "Turks and Caicos", "UAE", "United Kingdom", "USA", "Uganda", "Ukraine", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Zambia", "Zimbabwe"];
 var ul_container = document.getElementById('div-list-choices');
 
+var counter = 0;
+var selected = []
+
 function unhide_overlay() {
     document.getElementById('overlay-back').style.visibility = 'visible';
+
+    if (selected.length != 0) {
+        selected = [];
+    }
 }
 
 function hide_overlay() { 
     document.getElementById('overlay-back').style.visibility = 'hidden';
+}
+
+function check_which_checked() {
+    var countries_str = ''
+
+    for (i in names) {
+        if (document.getElementById(names[i]).checked) {
+            selected.push(names[i])
+        }
+    }
+
+    if (selected.length == 2) {
+        countries_str = selected[0] + ' and ' + selected[1];
+        document.getElementById('placeholder').style.color = '#000000';
+    } else if (selected.length == 1) {
+        countries_str = selected[0];
+        document.getElementById('placeholder').style.color = '#000000';
+    } else if (selected.length == 0) {
+        countries_str = 'Select countries'
+        document.getElementById('placeholder').style.color = '#cdcdcd';
+    } else {
+        countries_str = selected.length + ' countries'
+        document.getElementById('placeholder').style.color = '#000000';
+    }
+    
+    document.getElementById('placeholder').innerHTML = countries_str;
+}
+
+function subscribe() {
+    selected = []
+
+    for (i in names) {
+        if (document.getElementById(names[i]).checked) {
+            document.getElementById(names[i]).uncheck()
+        }
+    }
 }
 
 function add_list_elements() { 
@@ -41,9 +84,11 @@ function add_list_elements() {
         p.innerHTML = text;
         li.appendChild(p);
 
-        var check_fake = document.createElement('input');
-        check_fake.type = 'checkbox';
-        li.appendChild(check_fake);
+        var checkFake = document.createElement('input');
+        checkFake.setAttribute('id', names[i]);
+        checkFake.setAttribute('class', 'check-fake')
+        checkFake.type = 'checkbox';
+        li.appendChild(checkFake);
 
         var check = document.createElement('span');
         check.setAttribute('class', 'check');
