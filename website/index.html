@@ -26,7 +26,7 @@ limitations under the License. -->
         <meta name="keywords" content="software, python, covid19, erc, project">
     </head>
 
-    <body>
+    <body onload="add_list_elements()">
         <div class="main">
             <img src="../assets/virus-icon.svg" id="logo">
             <h1 class="title">Covid-19 Daily Newsletter</h1>
@@ -63,16 +63,9 @@ limitations under the License. -->
                 <img id="divider-or" src="../assets/or.svg">
                 <p id="title">Select Countries</p>
                 <div class="div-list-choices">
-                    <ul class="list-choices" id="list-choices">
-                        <!-- <li class="country">
-                            <img class="flag" src="../assets/flags/world.svg">
-                            <p class="country-name">Test</p>
-                            <input type="checkbox">
-                            <span class="check"></span>
-                        </li> -->
-                    </ul>
+                    <ul class="list-choices" id="list-choices"> </ul>
                 </div>
-                <hr class="divider" id="final">
+                <hr id="final">
                 <a class="done" onclick="hide_overlay()">Done</a>
             </div>
         </div>
