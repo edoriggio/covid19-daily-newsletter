@@ -305,9 +305,9 @@ form {
 .divider {
     position: relative;
 
-    top: 10px;
-    left: 20px;
-    right: 20px;
+    top: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
 
     margin: auto;
 

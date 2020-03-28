@@ -49,6 +49,10 @@ function add_list_elements() {
         check.setAttribute('class', 'check');
         li.appendChild(check);
 
+        var divider = document.createElement('hr');
+        divider.setAttribute('class', 'divider');
+        li.appendChild(divider);
+
         document.getElementById('list-choices').appendChild(li)
     }
 }
