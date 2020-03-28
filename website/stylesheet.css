@@ -250,9 +250,11 @@ form {
     position: relative;
 
     top: 30px;
-    left: 20px;
+    left: calc(12px + 2vw);
 
     border-style: none;
+
+    text-decoration: none;
 
     background-color: transparent;
 }

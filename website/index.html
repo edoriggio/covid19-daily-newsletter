@@ -18,7 +18,7 @@ limitations under the License. -->
         <title>Covid-19 Daily Newsletter</title>
 
         <link rel="stylesheet" href="./stylesheet.css">
-        <script src="./main.js"></script>
+        <script src="../scripts/main.js"></script>
 
         <meta charset="UTF-8">
         <meta name="author" content="Edoardo Riggio">
@@ -30,8 +30,8 @@ limitations under the License. -->
         <div class="main">
             <img src="../assets/virus-icon.svg" id="logo">
             <h1 class="title">Covid-19 Daily Newsletter</h1>
-            <form>
-                <input type="text" class="form-item" placeholder="Write your email here">
+            <form id="form">
+                <input type="text" class="form-item" id="email" placeholder="Write your email here">
                 <a class="form-item" id="country" onclick="unhide_overlay()">
                     <p id="placeholder">Select countries</p>
                     <img class="icon" src="../assets/arrow-down.svg">
@@ -42,7 +42,7 @@ limitations under the License. -->
 
         <div class="footer">
             <p>
-                Made by Edoardo Riggio & Luca de Felice &nbsp&nbsp x &nbsp&nbsp&nbsp
+                Made by Edoardo Riggio &nbsp&nbsp x &nbsp&nbsp&nbsp
                 <a href="https://www.codevscovid19.org/" target="_blank">#CodeVsCovid19</a>
             </p>
             <p style="transform: translateY(-10px);">-</p>
@@ -56,10 +56,10 @@ limitations under the License. -->
 
         <div id="overlay-back">
             <div class="choices" id="choice">
-                <button id="world">
+                <a id="world" onclick="world_checked()">
                     <img class="flag" src="../assets/flags/world.svg">
                     <p class="country-name">World</p>
-                </button>
+                </a>
                 <img id="divider-or" src="../assets/or.svg">
                 <p id="title">Select Countries</p>
                 <div class="div-list-choices">
