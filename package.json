@@ -1,0 +1,28 @@
+{
+  "name": "covid-19_daily_newsletter",
+  "version": "1.0.0",
+  "description": "#codevscovid19 project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edoriggio/covid-19_daily_newsletter.git"
+  },
+  "author": "Edoardo Riggio",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/edoriggio/covid-19_daily_newsletter/issues"
+  },
+  "homepage": "https://github.com/edoriggio/covid-19_daily_newsletter#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

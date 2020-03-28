@@ -24,14 +24,15 @@ limitations under the License. -->
         <meta name="author" content="Edoardo Riggio">
         <meta name="description" content="Covid-19 Daily Newsletter">
         <meta name="keywords" content="software, python, covid19, erc, project">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
     <body onload="add_list_elements()">
         <div class="main">
             <img src="../assets/virus-icon.svg" id="logo">
             <h1 class="title">Covid-19 Daily Newsletter</h1>
-            <form id="form">
-                <input type="text" class="form-item" id="email" placeholder="Write your email here">
+            <form action="/signup" method="POST">
+                <input type="text" class="form-item" id="email" name="email" placeholder="Write your email here">
                 <a class="form-item" id="country" onclick="unhide_overlay()">
                     <p id="placeholder">Select countries</p>
                     <img class="icon" src="../assets/arrow-down.svg">
