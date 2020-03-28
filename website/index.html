@@ -18,7 +18,7 @@ limitations under the License. -->
         <title>Covid-19 Daily Newsletter</title>
 
         <link rel="stylesheet" href="./stylesheet.css">
-        <link rel="javascript" href="main.js">
+        <script src="./main.js"></script>
 
         <meta charset="UTF-8">
         <meta name="author" content="Edoardo Riggio">
@@ -32,10 +32,10 @@ limitations under the License. -->
             <h1 class="title">Covid-19 Daily Newsletter</h1>
             <form>
                 <input type="text" class="form-item" placeholder="Write your email here">
-                <button class="form-item" id="country">
+                <a class="form-item" id="country" onclick="unhide_overlay()">
                     <p id="placeholder">Select countries</p>
                     <img class="icon" src="../assets/arrow-down.svg">
-                </button>
+                </a>
                 <input type="submit" class="button" value="Subscribe">
             </form>
         </div>
@@ -62,11 +62,18 @@ limitations under the License. -->
                 </button>
                 <img id="divider-or" src="../assets/or.svg">
                 <p id="title">Select Countries</p>
-                <div class="list-choices">
-
+                <div class="div-list-choices">
+                    <ul class="list-choices" id="list-choices">
+                        <!-- <li class="country">
+                            <img class="flag" src="../assets/flags/world.svg">
+                            <p class="country-name">Test</p>
+                            <input type="checkbox">
+                            <span class="check"></span>
+                        </li> -->
+                    </ul>
                 </div>
                 <hr class="divider" id="final">
-                <button class="done">Done</button>
+                <a class="done" onclick="hide_overlay()">Done</a>
             </div>
         </div>
     </body>

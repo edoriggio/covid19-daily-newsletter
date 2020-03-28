@@ -11,3 +11,19 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
+function unhide_overlay() {
+    document.getElementById('overlay-back').style.visibility = 'visible';
+}
+
+function hide_overlay() {
+    document.getElementById('overlay-back').style.visibility = 'hidden';
+}
+
+function add_list_elements() {
+    var ul = document.getElementById('list-choices');
+    var li = document.createElement('li');
+    li.setAttribute('class','country');
+    li.innerHTML = 'ciao'
+    ul.appendChild(li);
+}

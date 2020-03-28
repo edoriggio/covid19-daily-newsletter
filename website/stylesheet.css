@@ -110,6 +110,7 @@ form {
     font-weight: normal;
     font-size: calc(10px + .3vw);
     text-align: left;
+    text-decoration: none;
 
     color: #000000;
     background-color: #FFFFFF;
@@ -130,7 +131,6 @@ form {
     top: calc(50px + 1vw);
 
     height: 34px;
-    width: calc(320px + 1vw);
 
     background-color: #FFFFFF;
 }
@@ -210,6 +210,8 @@ form {
     left: 0px;
     bottom: 0px;
 
+    visibility: hidden;
+
     background: rgba(111, 111, 111, 0.24);
 }
 
@@ -248,7 +250,7 @@ form {
     position: relative;
 
     top: 30px;
-    left: 30px;
+    left: 20px;
 
     border-style: none;
 
@@ -274,13 +276,13 @@ form {
 .country-name {
     display: inline;
 
-    margin-left: 20px;
+    margin-left: 16px;
 
     vertical-align: middle;
 
     font-family: "Product Sans";
     font-weight: normal;
-    font-size: 18px;
+    font-size: 16px;
     text-align: left;
 
     color: #000000;
@@ -290,7 +292,7 @@ form {
     position: relative;
 
     top: 65px;
-    left: 20px;
+    left: 28px;
 
     font-family: "Product Sans";
     font-weight: bold;
@@ -327,26 +329,107 @@ form {
 
     right: 0px;
     left: 0px;
-    bottom: 5px;
+    bottom: 0px;
 
     margin: auto;
+    padding-top: 10px;
 
     width: 200px;
-    height: 50px;
+    height: 45px;
 
     font-family: "Product Sans";
     font-weight: bold;
     font-size: 20px;
     text-align: center;
+    text-decoration: none;
 
-    border-style: none;
-
-    background-color: transparent;
     color: #16a524;
 }
 
 .done:hover {
     cursor: pointer;
+}
+
+/*
+------------------------
+    LIST OF CHOICES
+------------------------
+*/
+
+.div-list-choices {
+    position: absolute;
+
+    top: 180px;
+    left: calc(15px + 2vw);
+    right: calc(15px + 2vw);
+    bottom: 64px;
+
+    margin: auto;
+
+    overflow-y: auto;
+}
+
+.list-choices {
+    list-style: none;
+
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.country {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*
+------------------------
+     CUSTOM CHECKER
+------------------------
+*/
+
+.country input {
+    position: absolute;
+
+    top: 25px;
+    right: 0px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    z-index: 1;
+}
+
+.check {
+    position: absolute;
+
+    top: 25px;
+    right: 0px;
+
+    height: 20px;
+    width: 20px;
+
+    cursor: pointer;
+
+    background: url("../assets/check/check-outline.svg");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+  
+    vertical-align: middle;
+}
+
+.country input:hover ~ .check {
+    background: url("../assets/check/check-hover.svg");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+}
+
+.country input:checked ~ .check {
+    background: url("../assets/check/check-filled.svg");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
 }
 
 /*
