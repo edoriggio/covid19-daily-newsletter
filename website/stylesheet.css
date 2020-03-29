@@ -175,6 +175,18 @@ form {
     background-color: #13811e;
 }
 
+#menu {
+    position: absolute;
+
+    top: calc(53px + 1vw);
+    left: 290px;
+    right: 0px;
+
+    margin: auto;
+
+    cursor: pointer;
+}
+
 /*
 ------------------------
          OVERLAY

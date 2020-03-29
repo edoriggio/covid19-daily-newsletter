@@ -20,7 +20,7 @@ import chart_studio.plotly as plotly
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-subscribers: {str: list} = {'edo': ['Italy', 'China']}
+subscribers: {str: list}
 
 data_url = 'https://corona-stats.online/?format=json'
 data = requests.get(data_url).json()
@@ -128,5 +128,3 @@ def delete_temp_files():
                 shutil.rmtree(file_path)
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
-
-generate_graphs(subscribers)

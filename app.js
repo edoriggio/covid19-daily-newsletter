@@ -32,7 +32,7 @@ app.post('/signup', (req, res) => {
   if (!email || !to_pass) {
     console.log('Please do not leave anything blank');
     return;
-  } else if (!email.contains('@')) {
+  } else if (!email.includes('@')) {
     console.log('Mail format is invalid');
     return;
   }
