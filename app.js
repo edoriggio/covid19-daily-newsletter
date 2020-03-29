@@ -1,5 +1,3 @@
-//import { countries_str_new } from "main.js";
-
 const express = require('express');
 const request = require('request');
 const bodyParser = require('body-parser');
@@ -15,11 +13,14 @@ app.use(express.static(path.join(__dirname, 'website')));
 
 // Signup Route
 app.post('/signup', (req, res) => {
-  const { email } = req.body;
+  const { email, to_pass } = req.body;
 
   // Make sure fields are filled
-  if (!email) {
-    res.redirect('./fail.html');
+  if (!email || !to_pass) {
+    alert('Please do not leave anything blank');
+    return;
+  } else if (!email.contains('@')) {
+    alert('Mail format is invalid');
     return;
   }
 
@@ -30,8 +31,7 @@ app.post('/signup', (req, res) => {
             email_address: email,
             status: 'subscribed',
             merge_fields: {
-                COUNTRY: 'Italia, USA',
-                COUNT: 2,
+                COUNTRY: to_pass,
             }
         }
     ]

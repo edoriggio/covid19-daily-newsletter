@@ -119,40 +119,18 @@ form {
 .form-item::placeholder {
     font-family: "Product Sans";
     font-weight: normal;
-    font-size: calc(10px + .3vw);
+    font-size: calc(10px + .2vw);
     text-align: left;
 
     color: #a2a2a2;
 }
 
-#country {
+#countries_temp {
     position: absolute;
 
+    cursor: pointer;
+
     top: calc(50px + 1vw);
-
-    height: 34px;
-
-    background-color: #FFFFFF;
-}
-
-#placeholder {
-    position: relative;
-
-    top: 0px;
-    right: 0px;
-    left: 0px;
-    bottom: 0px;
-
-    margin: auto;
-    vertical-align: middle;
-
-    font-family: "Product Sans";
-    font-weight: normal;
-    font-size: calc(10px + .3vw);
-    text-align: left;
-    line-height: 32px;
-
-    color: #cdcdcd;
 }
 
 #country:hover {

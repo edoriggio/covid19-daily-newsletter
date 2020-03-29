@@ -29,7 +29,20 @@ function unhide_overlay() {
 }
 
 // Function that hides the overlay when a button is clicked
-function hide_overlay() { 
+function hide_overlay() {
+    var all_unchecked = true;
+    
+    for (i in names) {
+        if (document.getElementById(names[i]).checked) {
+            all_unchecked = false;
+        }
+    }
+
+    if (all_unchecked && selected == []) {
+        document.getElementById('to_pass').value = '';
+    }
+    
+
     document.getElementById('overlay-back').style.visibility = 'hidden';
 }
 
@@ -73,6 +86,7 @@ function add_list_elements() {
 // placeholder <p> in order to display a summary of the chosen countries
 function check_which_checked() {
     var countries_str = ''
+    countries_str_new = ''
 
     for (i in names) {
         if (document.getElementById(names[i]).checked) {
@@ -87,24 +101,28 @@ function check_which_checked() {
             countries_str_new += selected[i];
         }
     }
-    
+
     // Check the length of the array so that only a few country names
     // are visible (to avoid cluttering)
     if (selected.length == 2) {
         countries_str = selected[0] + ' and ' + selected[1];
-        document.getElementById('placeholder').style.color = '#000000';
+        document.getElementById('countries_temp').style.color = '#000000';
+        document.getElementById('to_pass').value = selected[0] + ', ' + selected[1];
     } else if (selected.length == 1) {
         countries_str = selected[0];
-        document.getElementById('placeholder').style.color = '#000000';
+        document.getElementById('countries_temp').style.color = '#000000';
+        document.getElementById('to_pass').value = countries_str;
     } else if (selected.length == 0) {
         countries_str = 'Select countries'
-        document.getElementById('placeholder').style.color = '#cdcdcd';
+        document.getElementById('countries_temp').style.color = '#cdcdcd';
+        document.getElementById('to_pass').value = '';
     } else {
         countries_str = selected.length + ' countries'
-        document.getElementById('placeholder').style.color = '#000000';
+        document.getElementById('countries_temp').style.color = '#000000';
+        document.getElementById('to_pass').value = countries_str_new;
     }
     
-    document.getElementById('placeholder').innerHTML = countries_str;
+    document.getElementById('countries_temp').value = countries_str;
 }
 
 // Function called when the option "world" is clicked. Here the World string
@@ -112,8 +130,9 @@ function check_which_checked() {
 // unchecked
 function world_checked() {
     selected = ['World'];
-    document.getElementById('placeholder').innerHTML = selected.toString();
-    document.getElementById('placeholder').style.color = '#000000';
+    document.getElementById('countries_temp').value = selected.toString();
+    document.getElementById('to_pass').value = selected.toString();
+    document.getElementById('countries_temp').style.color = '#000000';
 
     // Uncheck all checked boxes
     for (i in names) {

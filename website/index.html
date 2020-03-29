@@ -33,10 +33,11 @@ limitations under the License. -->
             <h1 class="title">Covid-19 Daily Newsletter</h1>
             <form action="/signup" method="POST">
                 <input type="text" class="form-item" id="email" name="email" placeholder="Write your email here">
-                <a class="form-item" id="country" onclick="unhide_overlay()">
-                    <p id="placeholder">Select countries</p>
+                <a onclick="unhide_overlay()">
+                    <input readonly type="text" class="form-item" id="countries_temp" name="countries_temp" placeholder="Select countries">
                     <img class="icon" src="../assets/arrow-down.svg">
                 </a>
+                <input readonly hidden type="text" id="to_pass" name="to_pass">
                 <input type="submit" class="button" value="Subscribe">
             </form>
         </div>
