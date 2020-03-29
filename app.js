@@ -17,10 +17,10 @@ app.post('/signup', (req, res) => {
 
   // Make sure fields are filled
   if (!email || !to_pass) {
-    alert('Please do not leave anything blank');
+    console.log('Please do not leave anything blank');
     return;
   } else if (!email.contains('@')) {
-    alert('Mail format is invalid');
+    console.log('Mail format is invalid');
     return;
   }
 
