@@ -19,8 +19,6 @@ import requests
 import chart_studio.plotly as plotly
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-# All needed modules imported from ipython
-from IPython.display import display, HTML
 
 subscribers: {str: list} = {'edo': ['Italy', 'China']}
 
@@ -30,6 +28,7 @@ data = requests.get(data_url).json()
 def generate_graphs(subs):
     for user, countries in subscribers.items():
         bodies = []
+        final_body = ''
 
         for country in countries:
             graphs = []
@@ -37,13 +36,15 @@ def generate_graphs(subs):
             if country == 'World':
                 pass
             else:
+                email_body = ''
+
                 for i, n in zip(data['data'], range(len(data['data']))):
                     if i['country'] == country:
                         country_data = data['data'][n]
 
                         active_cases_labels = ['Mild condition', 'Critical condition']
                         active_cases_values = [country_data['active'] - country_data['critical'], country_data['critical']]
-                        
+
                         figure1 = go.Figure(data=[go.Pie(labels=active_cases_labels, values=active_cases_values, hole=.5)])
                         figure1.update_layout(
                             annotations=[dict(text=country_data['active'], x=0.5, y=0.53, font_size=18, showarrow=False),
@@ -58,18 +59,65 @@ def generate_graphs(subs):
                                         dict(text='Total cases', x=0.5, y=0.47, font_size=12, showarrow=False)])
 
                         graphs.append(figure1)
-                        graphs.append(figure2)            
+                        graphs.append(figure2)
 
-def save_graphs(graphs_list):
+                        save_graphs(graphs, country.lower())
+
+                        template = (''
+                            '<div style="padding-top: 10px">'
+                                '<img src="./assets/flags/{country_svg}.svg" style="height: 60px; vertical-align: middle;">'
+                                '<p style="display: inline; padding-left: 18px; font-size: 20px; font-weight: bold;">{country}</p>'
+                            '</div>'
+
+                            '<div style="padding-top: 30px;">'
+                                '<p style="display: inline; padding-left: 18px; font-size: 25px; font-weight: bold">Today</p>'
+
+                                '<div>'
+                                    '<div style="vertical-align: middle; width: 100px;">'
+                                        '<p style="line-height: 10px; font-size: 18px; font-weight: bold; text-align: center;">{new_cases}</p>'
+                                        '<p style="line-height: 10px; font-size: 14px; text-align: center;">New Cases</p>'
+                                    '</div>'
+
+                                    '<div style="width: 100px;">'
+                                        '<p style="line-height: 10px; font-size: 18px; font-weight: bold; text-align: center;">{deaths}</p>'
+                                        '<p style="line-height: 10px; font-size: 14px; text-align: center;">Deaths</p>'
+                                    '</div>'
+                                '</div>'
+                            '</div>'
+                            
+                            '<div style="padding-top: 30px;">'
+                                '<p style="display: inline; padding-left: 18px; font-size: 25px; font-weight: bold">Total</p>'
+
+                                '<div style="padding-top: 10px;">'
+                                    '<img src={image_1}>'
+                                    '<img src={image_2}>'
+                                '</div>'
+                            '</div>'
+
+                            '<hr>'
+                        '')
+
+                        _ = template
+                        _ = _.format(country_svg=country, new_cases=country_data['todayCases'], deaths=country_data['todayDeaths'], country=country, image_1='./assets/temp/figure_{}_0.png'.format(country), image_2='./assets/temp/figure_{}_1.png'.format(country))
+                        email_body += _
+
+                        bodies.append(email_body)
+            
+        for i in bodies:
+            final_body += i
+
+    print(final_body)
+
+def save_graphs(graphs_list, country):
     for i, c in zip(graphs_list, range(len(graphs_list))):
         script_dir = os.path.dirname(__file__)
-        rel_path = 'temp/figure_{}.png'.format(c)
+        rel_path = 'assets/temp/figure_{}_{}.png'.format(country, c)
         abs_file_path = os.path.join(script_dir, rel_path)
         i.write_image(abs_file_path)
 
 def delete_temp_files():
     script_dir = os.path.dirname(__file__)
-    rel_path = 'temp/'
+    rel_path = 'assets/temp/'
     folder = os.path.join(script_dir, rel_path)
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
@@ -80,3 +128,5 @@ def delete_temp_files():
                 shutil.rmtree(file_path)
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
+
+generate_graphs(subscribers)
