@@ -38,6 +38,21 @@ Making this project was more difficult than we planned. The major issues we enco
 
 - Find an easy and fast solution to were to save the members list (which we fortunately found in Mailchimp)
 
+## Screenshots
+
+![screenshot 1](./branding/screenshots/screen-1.png)
+Subsription webpage
+
+![screenshot 2](./branding/screenshots/screen-2.png)
+Choose the countries for which recieve info of
+
+![screenshot 3](./branding/screenshots/screen-3.png)
+Sample of an email
+
+---
+
+This project was made for the #codevscovid19 hackathon
+
 [logo]: ./branding/logo-extended.png
 [github_link_1]: https://github.com/sagarkarira/coronavirus-tracker-cli
 [link_2]: https://plotly.com/
