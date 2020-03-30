@@ -67,7 +67,7 @@ def send_email(recipient, body, images, world_flag = ''):
 
     s = smtplib.SMTP('smtp-relay.sendinblue.com', 587)
     s.starttls()
-    s.login("edo.riggio19@gmail.com", key)
+    s.login("officialercapps@gmail.com", key)
     s.sendmail(strFrom, strTo, msg.as_string())
     s.quit()
     
