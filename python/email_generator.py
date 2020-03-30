@@ -19,8 +19,11 @@ import requests
 import chart_studio.plotly as plotly
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+# Local scripts
+from get_members import get_members
+from send_email import send_email
 
-subscribers: {str: list}
+subscribers = get_members()
 
 data_url = 'https://corona-stats.online/?format=json'
 data = requests.get(data_url).json()
@@ -50,8 +53,8 @@ def generate_graphs(subs):
                             annotations=[dict(text=country_data['active'], x=0.5, y=0.53, font_size=18, showarrow=False),
                                         dict(text='Active cases', x=0.5, y=0.47, font_size=12, showarrow=False)])
 
-                        total_cases_labels = ['Recovered', 'Deaths']
-                        total_cases_values = [country_data['recovered'], country_data['deaths']]
+                        total_cases_labels = ['Recovered', 'Deaths', 'Active']
+                        total_cases_values = [country_data['recovered'], country_data['deaths'], country_data['active']]
 
                         figure2 = go.Figure(data=[go.Pie(labels=total_cases_labels, values=total_cases_values, hole=.5)])
                         figure2.update_layout(
@@ -65,7 +68,7 @@ def generate_graphs(subs):
 
                         template = (''
                             '<div style="padding-top: 10px">'
-                                '<img src="./assets/flags/{country_svg}.svg" style="height: 60px; vertical-align: middle;">'
+                                '<img src="{flag}" style="height: 40px; vertical-align: middle;">'
                                 '<p style="display: inline; padding-left: 18px; font-size: 20px; font-weight: bold;">{country}</p>'
                             '</div>'
 
@@ -98,7 +101,7 @@ def generate_graphs(subs):
                         '')
 
                         _ = template
-                        _ = _.format(country_svg=country, new_cases=country_data['todayCases'], deaths=country_data['todayDeaths'], country=country, image_1='./assets/temp/figure_{}_0.png'.format(country), image_2='./assets/temp/figure_{}_1.png'.format(country))
+                        _ = _.format(flag=country_data['countryInfo']['flag'], new_cases=country_data['todayCases'], deaths=country_data['todayDeaths'], country=country, image_1='./assets/temp/figure_{}_0.png'.format(country), image_2='./assets/temp/figure_{}_1.png'.format(country))
                         email_body += _
 
                         bodies.append(email_body)
@@ -106,7 +109,7 @@ def generate_graphs(subs):
         for i in bodies:
             final_body += i
 
-    print(final_body)
+        send_email(user, final_body)
 
 def save_graphs(graphs_list, country):
     for i, c in zip(graphs_list, range(len(graphs_list))):
@@ -128,3 +131,5 @@ def delete_temp_files():
                 shutil.rmtree(file_path)
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
+
+generate_graphs(subscribers)
