@@ -13,12 +13,23 @@
 # limitations under the License.
 
 import smtplib
+# Modules for sending an email
 from email.header import Header
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 
-def send_email(reciever, body, imgage_1, image_2 = ''):
+def send_email(reciever, body, images, world_flag = ''):
+    """
+    Send an email using sendinblue's smpt relay
+
+    Args:
+        reciever (str): The email address of the subscriber
+        body (str): The custom HTML body of the email
+        images (list): A list containing all paths of the
+                       generated graphs
+    """
+
     strFrom = 'officialercapps@gmail.com'
     strTo = reciever
 
@@ -39,26 +50,23 @@ def send_email(reciever, body, imgage_1, image_2 = ''):
     msgText = MIMEText(body, 'html')
     msgAlternative.attach(msgText)
 
-    with open(imgage_1, 'rb') as file:
-        msgImage = MIMEImage(file.read())
-        msgImage.add_header('Content-ID', '<image1>')
-        msgRoot.attach(msgImage)
-
-    if image_2 != '':
-        with open(image_2, 'rb') as file:
+    for n, i in enumerate(images):
+        with open(i, 'rb') as file:
             msgImage = MIMEImage(file.read())
-            msgImage.add_header('Content-ID', '<image2>')
+            msgImage.add_header('Content-ID', '<image{}>'.format(n))
             msgRoot.attach(msgImage)
 
-    s = smtplib.SMTP('smtp.gmail.com', 587)
-    s.starttls()
-    s.login()
-    s.sendmail(strFrom, strTo, msgRoot.as_string())
-    s.quit()
+    if world_flag != '':
+        with open(world_flag, 'rb') as file:
+            msgImage = MIMEImage(file.read())
+            msgImage.add_header('Content-ID', '<world_flag>'.format(n))
+            msgRoot.attach(msgImage)
 
-    # s = smtplib.SMTP('smtp-relay.sendinblue.com', 587)
-    # s.starttls()
-    # s.login()
-    # message = "Message_you_need_to_send"
-    # s.sendmail(strFrom, strTo, message)
-    # s.quit()
+    s = smtplib.SMTP('smtp-relay.sendinblue.com', 587)
+    s.starttls()
+    # TODO: insert credentials
+    s.login()
+    message = "Message_you_need_to_send"
+    s.sendmail(strFrom, strTo, message)
+    s.quit()
+    
