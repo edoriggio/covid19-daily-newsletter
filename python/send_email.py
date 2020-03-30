@@ -53,9 +53,9 @@ def send_email(recipient, body, images, world_flag = ''):
             msgImage.add_header('Content-ID', '<world_flag>'.format(n))
             msg.attach(msgImage)
 
-    # s = smtplib.SMTP('smtp-relay.sendinblue.com', 587)
-    # s.starttls()
-    # s.login("edo.riggio19@gmail.com", "QMnWXZ7dTG1Sskzg")
-    # s.sendmail(strFrom, strTo, msgText.as_string())
-    # s.quit()
+    s = smtplib.SMTP('smtp-relay.sendinblue.com', 587)
+    s.starttls()
+    s.login("edo.riggio19@gmail.com", "QMnWXZ7dTG1Sskzg")
+    s.sendmail(strFrom, strTo, msg.as_string())
+    s.quit()
     
