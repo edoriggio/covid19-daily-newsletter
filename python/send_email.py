@@ -19,54 +19,43 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 
-def send_email(reciever, body, images, world_flag = ''):
+def send_email(recipient, body, images, world_flag = ''):
     """
     Send an email using sendinblue's smpt relay
 
     Args:
-        reciever (str): The email address of the subscriber
+        recipient (str): The email address of the subscriber
         body (str): The custom HTML body of the email
         images (list): A list containing all paths of the
                        generated graphs
     """
 
     strFrom = 'officialercapps@gmail.com'
-    strTo = reciever
+    strTo = recipient
 
-    msgRoot = MIMEMultipart('related')
-    msgRoot['Subject'] = 'Your Daily COVID-19 Update'
-    msgRoot['From'] = strFrom
-    msgRoot['To'] = strTo
-
-    msgAlternative = MIMEMultipart('alternative')
-    msgAlternative['Subject'] = 'Your Daily COVID-19 Update'
-    msgAlternative['From'] = strFrom
-    msgAlternative['To'] = strTo
-    msgRoot.attach(msgAlternative)
-
-    msgText = MIMEText('Your Daily COVID-19 Update')
-    msgAlternative.attach(msgText)
+    msg = MIMEMultipart('alternative')
+    msg['From'] = strFrom
+    msg['To'] = strTo
+    msg['Subject'] = 'Your Daily COVID-19 Summary'
 
     msgText = MIMEText(body, 'html')
-    msgAlternative.attach(msgText)
+    msg.attach(msgText)
 
     for n, i in enumerate(images):
         with open(i, 'rb') as file:
             msgImage = MIMEImage(file.read())
             msgImage.add_header('Content-ID', '<image{}>'.format(n))
-            msgRoot.attach(msgImage)
+            msg.attach(msgImage)
 
     if world_flag != '':
         with open(world_flag, 'rb') as file:
             msgImage = MIMEImage(file.read())
             msgImage.add_header('Content-ID', '<world_flag>'.format(n))
-            msgRoot.attach(msgImage)
+            msg.attach(msgImage)
 
-    s = smtplib.SMTP('smtp-relay.sendinblue.com', 587)
-    s.starttls()
-    # TODO: insert credentials
-    s.login()
-    message = "Message_you_need_to_send"
-    s.sendmail(strFrom, strTo, message)
-    s.quit()
+    # s = smtplib.SMTP('smtp-relay.sendinblue.com', 587)
+    # s.starttls()
+    # s.login("edo.riggio19@gmail.com", "QMnWXZ7dTG1Sskzg")
+    # s.sendmail(strFrom, strTo, msgText.as_string())
+    # s.quit()
     
