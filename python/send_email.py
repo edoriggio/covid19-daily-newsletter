@@ -12,12 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
+import json
 import smtplib
 # Modules for sending an email
 from email.header import Header
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
+
+key = ''
+
+script_dir = os.path.dirname('covid-19_daily_newsletter')
+rel_path = 'secret.json'
+passw = os.path.join(script_dir, rel_path)
+
+with open(passw, 'r') as file:
+    data = json.load(file)
+    key = data['sendinblue']
 
 def send_email(recipient, body, images, world_flag = ''):
     """
@@ -55,7 +67,7 @@ def send_email(recipient, body, images, world_flag = ''):
 
     s = smtplib.SMTP('smtp-relay.sendinblue.com', 587)
     s.starttls()
-    s.login("edo.riggio19@gmail.com", "QMnWXZ7dTG1Sskzg")
+    s.login("edo.riggio19@gmail.com", key)
     s.sendmail(strFrom, strTo, msg.as_string())
     s.quit()
     

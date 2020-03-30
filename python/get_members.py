@@ -12,8 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
+import json
 # Mailchimp module (used to manage the subscribers)
 from mailchimp3 import MailChimp
+
+key = ''
+
+script_dir = os.path.dirname('covid-19_daily_newsletter')
+rel_path = 'secret.json'
+passw = os.path.join(script_dir, rel_path)
+
+with open(passw, 'r') as file:
+    data = json.load(file)
+    key = data['mailchimp']
 
 def get_members():
     """
@@ -23,7 +35,7 @@ def get_members():
     Returns:
         dict: a dictionary of subscribers
     """
-    client = MailChimp('72e1014164ec892ea15f5f0f5ae03c79-us19')
+    client = MailChimp(key)
     members = client.lists.members.all('c4abf5aa93', get_all=True, fields="members.email_address")['members']
     countries = client.lists.members.all('c4abf5aa93', get_all=True, fields="members.merge_fields")['members']
 
