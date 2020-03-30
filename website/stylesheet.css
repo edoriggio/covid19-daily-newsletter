@@ -74,6 +74,23 @@ a:hover {
     color: #16a524;
 }
 
+.subtitle {
+    position: absolute;
+
+    top: calc(150px + 1vw);
+    left: 0px;
+    right: 0px;
+
+    margin: auto;
+
+    font-family: "Product Sans";
+    font-size: calc(8px + 1vw);
+
+    text-align: center;
+
+    color: #16a524;
+}
+
 /*
 ------------------------
      FORM ELEMENTS
