@@ -18,7 +18,7 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 
-def send_email(reciever, body):
+def send_email(reciever, body, imgage_1, image_2 = ''):
     strFrom = 'officialercapps@gmail.com'
     strTo = reciever
 
@@ -39,20 +39,22 @@ def send_email(reciever, body):
     msgText = MIMEText(body, 'html')
     msgAlternative.attach(msgText)
 
+    with open(imgage_1, 'rb') as file:
+        msgImage = MIMEImage(file.read())
+        msgImage.add_header('Content-ID', '<image1>')
+        msgRoot.attach(msgImage)
+
+    if image_2 != '':
+        with open(image_2, 'rb') as file:
+            msgImage = MIMEImage(file.read())
+            msgImage.add_header('Content-ID', '<image2>')
+            msgRoot.attach(msgImage)
+
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
     s.login()
-    s.sendmail(strFrom, strTo, msgText.as_string())
+    s.sendmail(strFrom, strTo, msgRoot.as_string())
     s.quit()
-
-    # # This example assumes the image is in the current directory
-    # fp = open('test.jpg', 'rb')
-    # msgImage = MIMEImage(fp.read())
-    # fp.close()
-
-    # # Define the image's ID as referenced above
-    # msgImage.add_header('Content-ID', '<image1>')
-    # msgRoot.attach(msgImage)
 
     # s = smtplib.SMTP('smtp-relay.sendinblue.com', 587)
     # s.starttls()

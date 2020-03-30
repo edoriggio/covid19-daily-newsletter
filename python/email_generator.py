@@ -92,8 +92,8 @@ def generate_graphs(subs):
                                 '<p style="display: inline; padding-left: 18px; font-size: 25px; font-weight: bold">Total</p>'
 
                                 '<div style="padding-top: 10px;">'
-                                    '<img src={image_1}>'
-                                    '<img src={image_2}>'
+                                    '<img src="cid:image1">'
+                                    '<img src="cid:image2">'
                                 '</div>'
                             '</div>'
 
@@ -101,7 +101,7 @@ def generate_graphs(subs):
                         '')
 
                         _ = template
-                        _ = _.format(flag=country_data['countryInfo']['flag'], new_cases=country_data['todayCases'], deaths=country_data['todayDeaths'], country=country, image_1='./assets/temp/figure_{}_0.png'.format(country), image_2='./assets/temp/figure_{}_1.png'.format(country))
+                        _ = _.format(flag=country_data['countryInfo']['flag'],  new_cases=country_data['todayCases'], deaths=country_data['todayDeaths'], country=country)
                         email_body += _
 
                         bodies.append(email_body)
@@ -109,7 +109,13 @@ def generate_graphs(subs):
         for i in bodies:
             final_body += i
 
-        send_email(user, final_body)
+        script_dir = os.path.dirname(__file__)
+        rel_path0 = 'assets/temp/figure_{}_0.png'.format(country.lower())
+        rel_path1 = 'assets/temp/figure_{}_1.png'.format(country.lower())
+        abs_file_path0 = os.path.join(script_dir, rel_path0)
+        abs_file_path1 = os.path.join(script_dir, rel_path1)
+
+        send_email(user, final_body, 'assets/temp/figure_{}_0.png'.format(country.lower()), 'assets/temp/figure_{}_1.png'.format(country.lower()))
 
 def save_graphs(graphs_list, country):
     for i, c in zip(graphs_list, range(len(graphs_list))):
