@@ -10,7 +10,7 @@ Users can subscribe to the newsletter trough a webpage. Here they are requested 
 
 Once the user has completed the signup process, his job is done. Every day, at around 6pm, an email will be sent automatically to his inbox. The email will contain data regarding the spread of Covid-19 in the selected country with the aid of graphs, and link to the most recent news articles (which we plan to implement in the near future).
 
-## Technology used
+## Technologies used
 
 For this project we used a variety of different technologies as well as some open source software.
 
@@ -22,9 +22,11 @@ For this project we used a variety of different technologies as well as some ope
 
 - For the automatic mail creation and sent we used **Python 3.8**
 
-- For the data we used [**sagarkarira's coronavirus tracker CLI**][github_link_1]
+- For the data we used [<u>**sagarkarira's coronavirus tracker CLI**</u>][github_link_1]
 
-- For the generation of the graphs we used [**Plotly**][link_2]
+- For the generation of the graphs we used [<u>**Plotly**</u>][link_2]
+
+- For the email SMTP server we used [<u>**Sendinblue**</u>][link_3]
 
 ## Challenges we ran into
 
@@ -36,8 +38,7 @@ Making this project was more difficult than we planned. The major issues we enco
 
 - Find an easy and fast solution to were to save the members list (which we fortunately found in Mailchimp)
 
-## Our accomplishments 
-
 [logo]: ./branding/logo-extended.png
 [github_link_1]: https://github.com/sagarkarira/coronavirus-tracker-cli
 [link_2]: https://plotly.com/
+[link_3]: https://www.sendinblue.com/
