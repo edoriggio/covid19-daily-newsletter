@@ -38,6 +38,21 @@ Making this project was more difficult than we planned. The major issues we enco
 
 - Find an easy and fast solution to were to save the members list (which we fortunately found in Mailchimp)
 
+## How to use
+
+### Website
+
+To test the website, simply run **app.js** or run
+`
+npm run dev
+`
+And navigate to **localhost:5000** on your browser
+
+### Newsletter send
+
+To test the newletter, go to **main.py** and run the script.
+Now check your indox!
+
 ## Screenshots
 
 ![screenshot 1](./branding/screenshots/screen-1.png)
