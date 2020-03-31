@@ -6,7 +6,7 @@ In a period as delicate as the one we are living in right now, being able to hav
 
 ## What it does
 
-Users can subscribe to the newsletter trough a webpage. Here they are requested to input their email address and by clicking on the next field, an overlay appears prompting them to choose which country to receive data and news of. The countries selected can be more the one, and there is also the possibility to choose "World" - to receive data and news about Covid-19 from around the world.
+Users can subscribe to the newsletter trough a webpage. Here they are requested to input their email address and by clicking on the next field, an overlay appears prompting them to choose which country to receive data and news of. The countries selected can be more than one, and there is also the possibility to choose "World" - to receive data and news about Covid-19 from around the world.
 
 Once the user has completed the signup process, his job is done. Every day, at around 6pm, an email will be sent automatically to his inbox. The email will contain data regarding the spread of Covid-19 in the selected country with the aid of graphs, and link to the most recent news articles (which we plan to implement in the near future).
 
