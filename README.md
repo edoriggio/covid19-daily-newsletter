@@ -68,7 +68,10 @@ Sample of an email
 
 This project was made for the #codevscovid19 hackathon
 
+[**Buy me a coffee**][bmc]
+
 [logo]: ./branding/logo-extended.png
 [github_link_1]: https://github.com/sagarkarira/coronavirus-tracker-cli
 [link_2]: https://plotly.com/
 [link_3]: https://www.sendinblue.com/
+[bmc]: https://www.buymeacoffee.com/edoriggio
