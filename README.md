@@ -51,7 +51,7 @@ And navigate to **localhost:5000** on your browser
 ### Newsletter send
 
 To test the newletter, go to **main.py** and run the script.
-Now check your indox!
+Now check your inbox!
 
 ## Screenshots
 
