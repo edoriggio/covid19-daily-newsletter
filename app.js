@@ -12,12 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+require('dotenv').config()
+
 const express = require('express');
 const request = require('request');
 const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
+
+const MAILCHIMP_DC = process.env.MAILCHIMP_DC;
+const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY;
+const MAILCHIMP_LIST_ID = process.env.MAILCHIMP_LIST_ID;
 
 // Bodyparser Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -53,16 +59,17 @@ app.post('/signup', (req, res) => {
   const postData = JSON.stringify(data);
 
   const options = {
-    url: 'https://us19.api.mailchimp.com/3.0/lists/c4abf5aa93',
+    url: `https://${MAILCHIMP_DC}.api.mailchimp.com/3.0/lists/${MAILCHIMP_LIST_ID}`,
     method: 'POST',
     headers: {
-      Authorization: 'auth 72e1014164ec892ea15f5f0f5ae03c79-us19'
+      Authorization: `auth ${MAILCHIMP_API_KEY}`
     },
     body: postData
   };
 
   request(options, (err, response, body) => {
     if (err) {
+      console.log(err, body)
       res.redirect('fail.html');
     } else {
       if (response.statusCode === 200) {
