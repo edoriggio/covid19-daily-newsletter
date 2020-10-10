@@ -42,10 +42,13 @@ Making this project was more difficult than we planned. The major issues we enco
 
 ### Website
 
-To test the website, simply run **app.js** or run
-`
+Copy `env.sample` to `.env` and maintain correct values in it
+
+```
+npm install
 npm run dev
-`
+```
+
 And navigate to **localhost:5000** on your browser
 
 ### Newsletter send
