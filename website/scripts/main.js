@@ -38,7 +38,7 @@ function hide_overlay() {
         }
     }
 
-    if (all_unchecked && selected == []) {
+    if (all_unchecked && selected.length == 0) {
         document.getElementById('to_pass').value = '';
     }
     
