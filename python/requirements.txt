@@ -1,0 +1,11 @@
+certifi==2020.6.20
+chardet==3.0.4
+chart-studio==1.1.0
+idna==2.10
+mailchimp3==3.0.14
+plotly==4.11.0
+psutil==5.7.2
+requests==2.24.0
+retrying==1.3.3
+six==1.15.0
+urllib3==1.25.10
