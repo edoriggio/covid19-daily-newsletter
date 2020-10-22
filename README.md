@@ -78,3 +78,4 @@ This project was made for the #codevscovid19 hackathon
 [link_2]: https://plotly.com/
 [link_3]: https://www.sendinblue.com/
 [bmc]: https://www.buymeacoffee.com/edoriggio
+## Stay Home , Stay Safe , Stay-Updated-With-us.
