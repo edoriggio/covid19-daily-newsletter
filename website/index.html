@@ -31,17 +31,20 @@ limitations under the License. -->
         <div class="main">
             <img src="./assets/virus-icon.svg" class="faa-float animated" id="logo">
             <h1 class="title">Covid-19 Daily Newsletter</h1>
-            <form action="/signup" method="POST">
-                <input type="email" class="form-item" id="email" name="email" placeholder="Write your email here">
+            <form action="/signup" method="POST" id="signup">
+                <input type="email" class="form-item" id="sub_email" name="email" placeholder="Write your email here">
                 <div id="test" onclick="unhide_overlay()">
                     <input readonly type="text" class="form-item" id="countries_temp" name="countries_temp" placeholder="Select countries">
                     <img class="icon" id="menu" src="./assets/arrow-down.svg">
                 </div>
                 <input readonly hidden type="text" id="to_pass" name="to_pass">
-                <input type="submit" class="button" value="Subscribe">
+                <input type="submit" class="button" id="sub" value="Subscribe">
+            </form>
+            <form action="/unsubscribe" method="POST" id="unsub">
+                <input type="email" class="form-item" id="unsub_email" name="email" placeholder="Write email you would like to unsubscribe">
+                <input type="submit" class="button" id="unsub" value="Unsubscribe">
             </form>
         </div>
-
         <div class="footer">
             <p>
                 Made by Edoardo Riggio &nbsp&nbsp x &nbsp&nbsp&nbsp

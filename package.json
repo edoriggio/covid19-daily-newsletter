@@ -24,7 +24,7 @@
     "request": "^2.88.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2",
-    "dot-prop": ">=5.1.1"
+    "dot-prop": ">=5.1.1",
+    "nodemon": "^2.0.2"
   }
 }

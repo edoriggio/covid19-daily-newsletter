@@ -13,6 +13,7 @@
 // limitations under the License.
 
 require('dotenv').config()
+const h = require('./website/scripts/hash_md5.js')
 
 const express = require('express');
 const request = require('request');
@@ -34,7 +35,6 @@ app.use(express.static(path.join(__dirname, 'website')));
 // Signup Route for Mailchimp API call
 app.post('/signup', (req, res) => {
   const { email, to_pass } = req.body;
-
   if (!email || !to_pass) {
     console.log('Please do not leave anything blank');
     return;
@@ -65,6 +65,43 @@ app.post('/signup', (req, res) => {
       Authorization: `auth ${MAILCHIMP_API_KEY}`
     },
     body: postData
+  };
+
+  request(options, (err, response, body) => {
+    if (err) {
+      console.log(err, body)
+      res.redirect('fail.html');
+    } else {
+      if (response.statusCode === 200) {
+        res.redirect('success.html');
+      } else {
+        res.redirect('fail.html');
+      }
+    }
+  });
+});
+
+//Unsubscribe Route for Mailchimp API call
+app.post('/unsubscribe', (req, res) => {
+
+  const { email, to_pass } = req.body;
+
+  if (!email) {
+    console.log('Please do not leave email blank');
+    return;
+  } else if (!email.includes('@')) {
+    console.log('Mail format is invalid');
+    return;
+  }
+
+  hash = h.hash_md5(email)
+
+  const options = {
+    url: `https://${MAILCHIMP_DC}.api.mailchimp.com/3.0/lists/${MAILCHIMP_LIST_ID}/members/${hash}/actions/delete-permanent`,
+    method: 'POST',
+    headers: {
+      Authorization: `auth ${MAILCHIMP_API_KEY}`
+    }
   };
 
   request(options, (err, response, body) => {
