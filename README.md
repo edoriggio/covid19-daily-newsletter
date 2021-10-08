@@ -2,7 +2,7 @@
 
 ## Inspiration
 
-In a period as delicate as the one we are living in right now, being able to have the correct information is of fundamental importance. This is why we decided to create this project. We want to bring data and information to the user, not make them to look through the whole internet, just to find that tiny piece of information he needs to know.
+In a period as delicate as the one we are living in right now, being able to have the correct information is of fundamental importance. This is why we decided to create this project. We want to bring data and information to the user, not to make them look through the whole internet, just to find that tiny piece of information he/she needs to know.
 
 ## What it does
 
@@ -72,6 +72,8 @@ Sample of an email
 This project was made for the #codevscovid19 hackathon
 
 [**Buy me a coffee**][bmc]
+
+thanks for visiting
 
 [logo]: ./branding/logo-extended.png
 [github_link_1]: https://github.com/sagarkarira/coronavirus-tracker-cli
